@@ -53,6 +53,40 @@ int main() {
 
 <img width="628" height="609" alt="Screenshot 2025-10-06 202114" src="https://github.com/user-attachments/assets/52b2c1c1-3ca3-4f69-a5ea-76d463f4f2f8" />
 
+ ## C Program to create new process using Linux API system calls fork() and exit()
+ ```
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+int main()
+{       int status;
+        printf("Running ps with execlp\n");
+        execl("ps", "ps", "ax", NULL);
+        wait(&status);
+        if (WIFEXITED(status))
+                printf("child exited with status of %d\n", WEXITSTATUS(status));
+        else
+                puts("child did not exit successfully\n");
+        printf("Done.\n");
+printf("Running ps with execlp. Now with path specified\n");
+        execl("/bin/ps", "ps", "ax", NULL);
+        wait(&status);
+        if (WIFEXITED(status))
+                printf("child exited with status of %d\n", WEXITSTATUS(status));
+        else
+                puts("child did not exit successfully\n");
+        printf("Done.\n");
+        exit(0);}
+
+
+
+```
+# OUTPUT
+<img width="753" height="300" alt="Screenshot 2025-10-08 132233" src="https://github.com/user-attachments/assets/95ef4629-4276-43fc-959e-8d47783d0305" />
+
+
+
 
 
 
